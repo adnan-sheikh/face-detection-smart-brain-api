@@ -7,6 +7,7 @@ const { handleRegister } = require('./controllers/register');
 const { handleSignin } = require('./controllers/signin');
 const { handleGetProfile } = require('./controllers/getprofile');
 const { handleImage } = require('./controllers/image');
+const { handleApiCall } = require('./controllers/image');
 
 const db = knex({
   client: 'pg',
@@ -41,6 +42,10 @@ app.get('/profile/:id', (req, res) => {
 
 app.put('/image', (req, res) => {
   handleImage(req, res, db);
+});
+
+app.post('/imageurl', (req, res) => {
+  handleApiCall(req, res);
 });
 
 app.listen(3000, () => {
